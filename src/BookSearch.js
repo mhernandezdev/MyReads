@@ -16,23 +16,22 @@ class BookSearch extends Component {
     }
 
     handleSearch = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        // empty no reasone to call api // clear out the state
-        if(e.target.value===""){
-            this.setState({ results: [] })
+        if(e.target.value===''){
+            // empty input do not call API // clear out the state
+            this.setState({ results: [] });
         }else{
             BooksAPI.search(e.target.value, 20).then(
                 (results) => {
                     if(!results || results.error){
-                        this.setState({ results:[] })
+                        this.setState({ results:[] });
                     }else{
-                        // loop results tell its it shelf // if on shelf
+                        // Check to see if books are on a shelf
                         results.map((resultBook => (
                             this.props.books.map(book => resultBook.id===book.id && (resultBook.shelf = book.shelf) )
-                        )))
-
-                        this.setState({ results:results })
+                        )));
+                        this.setState({ results:results });
                     }
             })
         }

@@ -1,5 +1,5 @@
 ## MyReads
-Udacity react MyReads project: A bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read.
+Udacity React MyReads project: Bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read.
 
 
 

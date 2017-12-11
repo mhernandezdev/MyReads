@@ -13,11 +13,11 @@ class BooksApp extends React.Component {
     componentDidMount(){
         BooksAPI.getAll().then((books) => {
             this.setState({ books })
-        })
+        });
     }
 
     onShelfChange = (e, changedBook) => {
-        // because search uses the results array make sure books is being updated
+        // changedBook could be a member of search results so ensure state.books book is being updated
         const updateBook = this.state.books.filter( book => ( book.id === changedBook.id));
         let myBook;
         if(updateBook.length===0){
@@ -27,9 +27,7 @@ class BooksApp extends React.Component {
             myBook = updateBook[0];
         }
         myBook.shelf = e.target.value;
-
-        this.setState({ books:this.state.books })
-
+        this.setState({ books:this.state.books });
         BooksAPI.update(myBook, e.target.value);
     }
 
